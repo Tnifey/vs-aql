@@ -1,0 +1,1137 @@
+{
+  "for": {
+    "prefix": "FOR",
+    "body": ["FOR ${1:variable} IN ${2:expression}"],
+    "description": "FOR ... IN ...\nhttps://www.arangodb.com/docs/stable/aql/operations-for.html"
+  },
+  "FILTER": {
+    "prefix": "FILTER",
+    "body": ["FILTER", "\t${1:condition}"],
+    "description": "FILTER ..."
+  },
+  "LIMIT": {
+    "prefix": "LIMIT",
+    "body": ["LIMIT ${1:limit}"],
+    "description": "LIMIT limit"
+  },
+  "skip statement": {
+    "prefix": "skip",
+    "body": ["LIMIT ${1:skip}, ${2:limit}"],
+    "description": "LIMIT skip limit"
+  },
+  "RETURN statement": {
+    "prefix": "RETURN",
+    "body": ["RETURN", "\t${1:expression}"],
+    "description": "RETURN\n\t..."
+  },
+  "RETURN inline statement": {
+    "prefix": "ret",
+    "body": ["RETURN ${1:expression}"],
+    "description": "RETURN expression"
+  },
+  "RETURN distinct statement": {
+    "prefix": "rd",
+    "body": ["RETURN DISTINCT", "\t${1:expression}"],
+    "description": "RETURN DISTINCT ..."
+  },
+  "SORT statement": {
+    "prefix": "SORT",
+    "body": ["SORT ${1:expression}"],
+    "description": "SORT ..."
+  },
+  "sort with direction statement": {
+    "prefix": "sortd",
+    "body": ["SORT ${1:expression} ${2|ASC,DESC|}"],
+    "description": "SORT expression direction"
+  },
+  "LET statement": {
+    "prefix": "LET",
+    "body": ["LET ${1:variable} = ${2:expression}"],
+    "description": "LET variableName = expression"
+  },
+  "COLLECT statement": {
+    "prefix": "COLLECT",
+    "body": ["COLLECT ${1:variable} = ${2:expression}"],
+    "description": "COLLECT variableName = expression"
+  },
+  "REMOVE statement": {
+    "prefix": "REMOVE",
+    "body": ["REMOVE ${1:key} IN ${2:collection}"],
+    "description": "REMOVE keyExpression IN collection"
+  },
+  "UPDATE statement": {
+    "prefix": "UPDATE",
+    "body": ["UPDATE ${1:document} IN ${2:collection}"],
+    "description": "UPDATE document IN collection"
+  },
+  "UPDATE with statement": {
+    "prefix": "updatewith",
+    "body": ["UPDATE ${1:keyExpression} WITH ${2:document} IN ${3:collection}"],
+    "description": "UPDATE keyExpression WITH document IN collection"
+  },
+  "REPLACE statement": {
+    "prefix": "REPLACE",
+    "body": ["REPLACE ${1:document} IN ${2:collection}"],
+    "description": "REPLACE document IN collection"
+  },
+  "REPLACE with statement": {
+    "prefix": "replacewith",
+    "body": [
+      "REPLACE ${1:keyExpression} WITH ${2:document} IN ${3:collection}"
+    ],
+    "description": "REPLACE keyExpression WITH document IN collection"
+  },
+  "INSERT statement": {
+    "prefix": "INSERT",
+    "body": ["INSERT ${1:document} INTO ${2:collection}"],
+    "description": "INSERT document INTO collection"
+  },
+  "insert many statement": {
+    "prefix": "insertmany",
+    "body": [
+      "FOR ${1:variable} IN ${2:documents}",
+      "\tINSERT ${1:variable} INTO ${3:collection}"
+    ],
+    "description": "INSERT manu documents into collection"
+  },
+  "UPSERT statement": {
+    "prefix": "UPSERT",
+    "body": [
+      "UPSERT ${1:searchExpression}",
+      "INSERT ${2:insertExpression}",
+      "UPDATE ${3:updateExpression} IN ${4:collection}"
+    ],
+    "description": "UPSERT searchExpression INSERT insertExpression UPDATE updateExpression IN collection"
+  },
+  "uplace statement": {
+    "prefix": "uplace",
+    "body": ["UPSERT $1", "INSERT $2", "REPLACE $3 IN $4"],
+    "description": "UPSERT searchExpression INSERT insertExpression REPLACE updateExpression IN collection"
+  },
+  "WITH": {
+    "prefix": "WITH",
+    "body": ["WITH ${1:collection}", "$0"],
+    "description": "WITH ..."
+  },
+  "DOCUMENT": {
+    "prefix": "DOCUMENT",
+    "body": ["DOCUMENT(${1:identity})"],
+    "description": "DOCUMENT(...)"
+  },
+  "OUTBOUND": {
+    "prefix": "OUTBOUND",
+    "body": ["OUTBOUND"],
+    "description": "OUTBOUND"
+  },
+  "INBOUND": {
+    "prefix": "INBOUND",
+    "body": ["INBOUND"],
+    "description": "INBOUND"
+  },
+  "ANY": {
+    "prefix": "ANY",
+    "body": ["ANY"],
+    "description": "ANY"
+  },
+  "ASC": {
+    "prefix": "ASC",
+    "body": ["ASC"],
+    "description": "ASC"
+  },
+  "DESC": {
+    "prefix": "DESC",
+    "body": ["DESC"],
+    "description": "desc"
+  },
+  "APPEND": {
+    "prefix": "APPEND",
+    "body": ["APPEND(${1:array}, ${2:values}, ${3:unique})"],
+    "description": "APPEND(array, values, unique)"
+  },
+  "CONTAINS_ARRAY": {
+    "prefix": "CONTAINS_ARRAY",
+    "body": ["CONTAINS_ARRAY(${1:array}, ${2:values}, ${3:unique})"],
+    "description": "CONTAINS_ARRAY(array, values, unique)"
+  },
+  "COUNT": {
+    "prefix": "COUNT",
+    "body": ["COUNT(${1:any})"],
+    "description": "COUNT(any)"
+  },
+  "COUNT_DISTINCT": {
+    "prefix": "COUNT_DISTINCT",
+    "body": ["COUNT_DISTINCT(${1:array})"],
+    "description": "COUNT_DISTINCT(array)"
+  },
+  "COUNT_UNIQUE": {
+    "prefix": "COUNT_UNIQUE",
+    "body": ["COUNT_UNIQUE(${1:array})"],
+    "description": "COUNT_UNIQUE(array)"
+  },
+  "FIRST": {
+    "prefix": "FIRST",
+    "body": ["FIRST(${1:array})"],
+    "description": "FIRST(array)"
+  },
+  "FLATTEN": {
+    "prefix": "FLATTEN",
+    "body": ["FLATTEN(${1:array}, $(2:depth))"],
+    "description": "FLATTEN(array, depth)"
+  },
+  "INTERSECTION": {
+    "prefix": "INTERSECTION",
+    "body": ["INTERSECTION(${1:array}, ${2:array2}$3)"],
+    "description": "INTERSECTION(array1, array2, ... arrayN)"
+  },
+  "LAST": {
+    "prefix": "LAST",
+    "body": ["LAST(${1:array})"],
+    "description": "LAST(anyArray)"
+  },
+  "LENGTH": {
+    "prefix": "LENGTH",
+    "body": ["LENGTH(${1:array})"],
+    "description": "LENGTH(any)"
+  },
+  "MINUS": {
+    "prefix": "MINUS",
+    "body": ["MINUS(${1:array}, ${2:array2}$3)"],
+    "description": "MINUS(array1, array2, ... arrayN)"
+  },
+  "DIFFERENCE": {
+    "prefix": "DIFFERENCE",
+    "body": ["MINUS(${1:array}, ${2:array2}$3)"],
+    "description": "Alias to MINUS\nMINUS(array1, array2, ... arrayN)"
+  },
+  "NTH": {
+    "prefix": "NTH",
+    "body": ["NTH(${1:array}, ${2:position)"],
+    "description": "NTH(anyArray, position)"
+  },
+  "OUTERSECTION": {
+    "prefix": "OUTERSECTION",
+    "body": ["OUTERSECTION(${1:array1}, ${2:array2}$3)"],
+    "description": "OUTERSECTION(array1, array2, ... arrayN)"
+  },
+  "POP": {
+    "prefix": "POP",
+    "body": ["POP(${1:array})"],
+    "description": "POP(anyArray) "
+  },
+  "POSITION": {
+    "prefix": "POSITION",
+    "body": ["POSITION(${1:array}, ${2:search}${3:, ${4|true,false|}})"],
+    "description": "POSITION(anyArray, search, returnIndex)"
+  },
+  "PUSH": {
+    "prefix": "PUSH",
+    "body": ["PUSH(${1:array}, ${2:value}${3:, ${4|true,false|}})"],
+    "description": "PUSH(anyArray, value, unique)"
+  },
+  "REMOVE_NTH": {
+    "prefix": "REMOVE_NTH",
+    "body": ["REMOVE_NTH(${1:array}, ${2:position)"],
+    "description": "REMOVE_NTH(anyArray, position)"
+  },
+  "REMOVE_VALUE": {
+    "prefix": "REMOVE_VALUE",
+    "body": ["REMOVE_VALUE(${1:array}, ${2:value}, ${3:limit})"],
+    "description": "REMOVE_VALUE(anyArray, value, limit)"
+  },
+  "REMOVE_VALUES": {
+    "prefix": "REMOVE_VALUES",
+    "body": ["REMOVE_VALUES(${1:array}, ${2:values})"],
+    "description": "REMOVE_VALUES(anyArray, values)"
+  },
+  "REVERSE": {
+    "prefix": "REVERSE",
+    "body": ["REVERSE(${1:array})"],
+    "description": "REVERSE(anyArray)"
+  },
+  "SLICE": {
+    "prefix": "SLICE",
+    "body": ["SLICE(${1:array}, ${2:start}, ${3:length})"],
+    "description": "SLICE(anyArray, start, length)"
+  },
+  "SORTED": {
+    "prefix": "SORTED",
+    "body": ["SORTED(${1:array})"],
+    "description": "SORTED(anyArray)"
+  },
+  "SORTED_UNIQUE": {
+    "prefix": "SORTED_UNIQUE",
+    "body": ["SORTED_UNIQUE(${1:array})"],
+    "description": "SORTED_UNIQUE(anyArray)"
+  },
+  "UNION": {
+    "prefix": "UNION",
+    "body": ["UNION(${1:array}, ${2:array2}$3)"],
+    "description": "UNION(array1, array2, ...arrayN)"
+  },
+  "UNION_DISTINCT": {
+    "prefix": "UNION_DISTINCT",
+    "body": ["UNION_DISTINCT(${1:array}, ${2:array2}$3)"],
+    "description": "UNION_DISTINCT(array1, array2, ...arrayN)"
+  },
+  "UNIQUE": {
+    "prefix": "UNIQUE",
+    "body": ["UNIQUE(${1:array})"],
+    "description": "UNIQUE(anyArray)"
+  },
+  "UNSHIFT": {
+    "prefix": "UNSHIFT",
+    "body": ["UNSHIFT(${1:array}, ${2:value}, ${3|true,false|})"],
+    "description": "UNSHIFT(anyArray, value, unique)"
+  },
+
+  "DATE_NOW": {
+    "prefix": "DATE_NOW",
+    "body": ["DATE_NOW()"],
+    "description": "DATE_NOW()"
+  },
+  "NOW": {
+    "prefix": "NOW",
+    "body": ["DATE_NOW()"],
+    "description": "DATE_NOW()"
+  },
+
+  "DATE_TIMESTAMP": {
+    "prefix": "DATE_TIMESTAMP",
+    "body": ["DATE_TIMESTAMP(${1:date}$2)"],
+    "description": "DATE_TIMESTAMP(dateInISO8601)\nDATE_TIMESTAMP(year, month, day, hour, minute, second, millisecond)"
+  },
+  "DATE_ISO8601": {
+    "prefix": "DATE_ISO8601",
+    "body": ["DATE_ISO8601(${1:date}$2)"],
+    "description": "DATE_ISO8601(date)\nDATE_ISO8601(year, month, day, hour, minute, second, millisecond)"
+  },
+  "IS_DATESTRING": {
+    "prefix": "IS_DATESTRING",
+    "body": ["IS_DATESTRING(${1:value})"],
+    "description": "IS_DATESTRING(value)"
+  },
+  "DATE_DAYOFWEEK": {
+    "prefix": "DATE_DAYOFWEEK",
+    "body": ["DATE_DAYOFWEEK(${1:date})"],
+    "description": "DATE_DAYOFWEEK(date)"
+  },
+  "DATE_YEAR": {
+    "prefix": "DATE_YEAR",
+    "body": ["DATE_YEAR(${1:date})"],
+    "description": "DATE_YEAR(date)"
+  },
+  "DATE_MONTH": {
+    "prefix": "DATE_MONTH",
+    "body": ["DATE_MONTH(${1:date})"],
+    "description": "DATE_MONTH(date)"
+  },
+  "DATE_HOUR": {
+    "prefix": "DATE_HOUR",
+    "body": ["DATE_HOUR(${1:date})"],
+    "description": "DATE_HOUR(date)"
+  },
+  "DATE_MINUTE": {
+    "prefix": "DATE_MINUTE",
+    "body": ["DATE_MINUTE(${1:date})"],
+    "description": "DATE_MINUTE(date)"
+  },
+  "DATE_SECOND": {
+    "prefix": "DATE_SECOND",
+    "body": ["DATE_SECOND(${1:date})"],
+    "description": "DATE_SECOND(date)"
+  },
+  "DATE_MILLISECOND": {
+    "prefix": "DATE_MILLISECOND",
+    "body": ["DATE_MILLISECOND(${1:date})"],
+    "description": "DATE_MILLISECOND(date)"
+  },
+  "DATE_DAYOFYEAR": {
+    "prefix": "DATE_DAYOFYEAR",
+    "body": ["DATE_DAYOFYEAR(${1:date})"],
+    "description": "DATE_DAYOFYEAR(date)"
+  },
+  "DATE_ISOWEEK": {
+    "prefix": "DATE_ISOWEEK",
+    "body": ["DATE_ISOWEEK(${1:date})"],
+    "description": "DATE_ISOWEEK(date)"
+  },
+  "DATE_QUARTER": {
+    "prefix": "DATE_QUARTER",
+    "body": ["DATE_QUARTER(${1:date})"],
+    "description": "DATE_QUARTER(date)"
+  },
+  "DATE_DAYS_IN_MONTH": {
+    "prefix": "DATE_DAYS_IN_MONTH",
+    "body": ["DATE_DAYS_IN_MONTH(${1:date})"],
+    "description": "DATE_DAYS_IN_MONTH(date)"
+  },
+  "DATE_TRUNC": {
+    "prefix": "DATE_TRUNC",
+    "body": ["DATE_TRUNC(${1:value}, ${2:unit)"],
+    "description": "DATE_TRUNC(date, unit)"
+  },
+  "DATE_FORMAT": {
+    "prefix": "DATE_FORMAT",
+    "body": ["DATE_FORMAT(${1:value}, ${2:format)"],
+    "description": "DATE_FORMAT(date, format)"
+  },
+  "DATE_ADD": {
+    "prefix": "DATE_ADD",
+    "body": ["DATE_ADD(${1:value}, ${2:amount}, ${3:unit})"],
+    "description": "DATE_ADD(date, amount, unit)"
+  },
+  "DATE_SUBTRACT": {
+    "prefix": "DATE_SUBTRACT",
+    "body": ["DATE_SUBTRACT(${1:value}, ${2:amount}, ${3:unit})"],
+    "description": "DATE_SUBTRACT(date, amount, unit)"
+  },
+  "DATE_DIFF": {
+    "prefix": "DATE_DIFF",
+    "body": ["DATE_DIFF(${1:date1}, ${2:date2}, ${3:unit}, ${4:asFloat})"],
+    "description": "DATE_DIFF(date1, date2, unit, asFloat)"
+  },
+  "DATE_COMPARE": {
+    "prefix": "DATE_COMPARE",
+    "body": [
+      "DATE_COMPARE(${1:date1}, ${2:date2}, ${3:unitRangeStart}, ${4:unitRangeEnd})"
+    ],
+    "description": "DATE_COMPARE(date1, date2, unitRangeStart, unitRangeEnd)"
+  },
+
+  "ATTRIBUTES": {
+    "prefix": "ATTRIBUTES",
+    "body": ["ATTRIBUTES(${1:document}, ${2:removeInternal}, ${3:sort})"],
+    "description": "ATTRIBUTES(document, removeInternal, sort)"
+  },
+  "HAS": {
+    "prefix": "HAS",
+    "body": ["HAS(${1:document}, ${2:attributeName})"],
+    "description": "HAS(document, attributeName)"
+  },
+  "IS_SAME_COLLECTION": {
+    "prefix": "IS_SAME_COLLECTION",
+    "body": ["IS_SAME_COLLECTION(${1:collectionName}, ${2:documentHandle})"],
+    "description": "IS_SAME_COLLECTION(collectionName, documentHandle)"
+  },
+  "KEEP": {
+    "prefix": "KEEP",
+    "body": ["KEEP(${1:document}, ${2:attributeName}$3)"],
+    "description": "KEEP(document, attributeName, ...attributeNameN)"
+  },
+  "MATCHES": {
+    "prefix": "MATCHES",
+    "body": ["MATCHES(${1:document}, ${2:examples}, ${3:returnIndex})"],
+    "description": "MATCHES(document, examples, returnIndex)"
+  },
+  "MERGE": {
+    "prefix": "MERGE",
+    "body": ["MERGE(${1:document}, ${2:document2}$3)"],
+    "description": "MERGE(document, document2, ...documentN)"
+  },
+  "MERGE_RECURSIVE": {
+    "prefix": "MERGE_RECURSIVE",
+    "body": ["MERGE_RECURSIVE(${1:document}, ${2:document2}$3)"],
+    "description": "MERGE_RECURSIVE(document, document2, ...documentN)"
+  },
+  "PARSE_IDENTIFIER": {
+    "prefix": "PARSE_IDENTIFIER",
+    "body": ["PARSE_IDENTIFIER(${1:documentHandle})"],
+    "description": "PARSE_IDENTIFIER(documentHandle)"
+  },
+  "TRANSLATE": {
+    "prefix": "TRANSLATE",
+    "body": ["TRANSLATE(${1:value}, ${2:lookupDocument}$3)"],
+    "description": "TRANSLATE(value, lookupDocument, defaultValue)"
+  },
+  "UNSET": {
+    "prefix": "UNSET",
+    "body": ["UNSET(${1:document}, ${2:attributeName}$3)"],
+    "description": "UNSET(document, attributeName, ...attributeNameN)"
+  },
+  "UNSET_RECURSIVE": {
+    "prefix": "UNSET_RECURSIVE",
+    "body": ["UNSET_RECURSIVE(${1:document}, ${2:attributeName}$3)"],
+    "description": "UNSET_RECURSIVE(document, attributeName, ...attributeNameN)"
+  },
+  "VALUES": {
+    "prefix": "VALUES",
+    "body": ["VALUES(${1:document}, ${2:removeInternal})"],
+    "description": "VALUES(document, removeInternal)"
+  },
+  "ZIP": {
+    "prefix": "ZIP",
+    "body": ["ZIP(${1:keys}, ${2:values})"],
+    "description": "ZIP(keys, values)"
+  },
+  "FULLTEXT": {
+    "prefix": "FULLTEXT",
+    "body": ["FULLTEXT(${1:coll}, ${2:attribute}, ${3:query}, ${4:limit})"],
+    "description": "FULLTEXT(coll, attribute, query, limit)"
+  },
+  "DISTANCE": {
+    "prefix": "DISTANCE",
+    "body": [
+      "DISTANCE(${1:latitude1}, ${2:longitude1}, ${3:latitude2}, ${4:longitude2})"
+    ],
+    "description": "DISTANCE(latitude1, longitude1, latitude2, longitude2)"
+  },
+  "GEO_CONTAINS": {
+    "prefix": "GEO_CONTAINS",
+    "body": ["GEO_CONTAINS(${1:geoJsonA}, ${2:geoJsonB})"],
+    "description": "GEO_CONTAINS(geoJsonA, geoJsonB)"
+  },
+  "GEO_DISTANCE": {
+    "prefix": "GEO_DISTANCE",
+    "body": ["GEO_DISTANCE(${1:geoJsonA}, ${2:geoJsonB})"],
+    "description": "GEO_DISTANCE(geoJsonA, geoJsonB)"
+  },
+  "GEO_EQUALS": {
+    "prefix": "GEO_EQUALS",
+    "body": ["GEO_EQUALS(${1:geoJsonA}, ${2:geoJsonB})"],
+    "description": "GEO_EQUALS(geoJsonA, geoJsonB)"
+  },
+  "GEO_INTERSECTS": {
+    "prefix": "GEO_INTERSECTS",
+    "body": ["GEO_INTERSECTS(${1:geoJsonA}, ${2:geoJsonB})"],
+    "description": "GEO_INTERSECTS(geoJsonA, geoJsonB)"
+  },
+  "IS_IN_POLYGON": {
+    "prefix": "IS_IN_POLYGON",
+    "body": ["IS_IN_POLYGON(${1:polygon}, ${2:latitude}, ${3:longitude})"],
+    "description": "IS_IN_POLYGON(polygon, latitude, longitude)\ndeprecated: use GEO_CONTAINS"
+  },
+  "GEO_LINESTRING": {
+    "prefix": "GEO_LINESTRING",
+    "body": ["GEO_LINESTRING(${1:points})"],
+    "description": "GEO_LINESTRING(points)"
+  },
+  "GEO_MULTILINESTRING": {
+    "prefix": "GEO_MULTILINESTRING",
+    "body": ["GEO_MULTILINESTRING(${1:points})"],
+    "description": "GEO_MULTILINESTRING(points)"
+  },
+  "GEO_MULTIPOINT": {
+    "prefix": "GEO_MULTIPOINT",
+    "body": ["GEO_MULTIPOINT(${1:points})"],
+    "description": "GEO_MULTIPOINT(points)"
+  },
+  "GEO_POINT": {
+    "prefix": "GEO_POINT",
+    "body": ["GEO_POINT(${1:longitude}, ${2:latitude})"],
+    "description": "GEO_POINT(longitude, latitude)"
+  },
+  "GEO_POLYGON": {
+    "prefix": "GEO_POLYGON",
+    "body": ["GEO_POLYGON(${1:points})"],
+    "description": "GEO_POLYGON(points)"
+  },
+  "GEO_MULTIPOLYGON": {
+    "prefix": "GEO_MULTIPOLYGON",
+    "body": ["GEO_MULTIPOLYGON(${1:points})"],
+    "description": "GEO_MULTIPOLYGON(points)"
+  },
+  "NOT_NULL": {
+    "prefix": "NOT_NULL",
+    "body": ["NOT_NULL(${1:alternative}$2)"],
+    "description": "NOT_NULL(alternative, ...)"
+  },
+  "FIRST_LIST": {
+    "prefix": "FIRST_LIST",
+    "body": ["FIRST_LIST(${1:alternative}$2)"],
+    "description": "FIRST_LIST(alternative, ...)"
+  },
+  "FIRST_DOCUMENT": {
+    "prefix": "FIRST_DOCUMENT",
+    "body": ["FIRST_DOCUMENT(${1:alternative}$2)"],
+    "description": "FIRST_DOCUMENT(alternative, ...)"
+  },
+  "CHECK_DOCUMENT": {
+    "prefix": "CHECK_DOCUMENT",
+    "body": ["CHECK_DOCUMENT(${1:document})"],
+    "description": "CHECK_DOCUMENT(document)"
+  },
+  "COLLECTION_COUNT": {
+    "prefix": "COLLECTION_COUNT",
+    "body": ["COLLECTION_COUNT(${1:collection})"],
+    "description": "COLLECTION_COUNT(collection)"
+  },
+  "COLLECTIONS": {
+    "prefix": "COLLECTIONS",
+    "body": ["COLLECTIONS()"],
+    "description": "COLLECTIONS()"
+  },
+  "CURRENT_USER": {
+    "prefix": "CURRENT_USER",
+    "body": ["CURRENT_USER()"],
+    "description": "CURRENT_USER()"
+  },
+  "HASH": {
+    "prefix": "HASH",
+    "body": ["HASH(${1:value})"],
+    "description": "HASH(value)"
+  },
+  "CRC32": {
+    "prefix": "CRC32",
+    "body": ["CRC32(${1:text})"],
+    "description": "CRC32(text)"
+  },
+  "FNV64": {
+    "prefix": "FNV64",
+    "body": ["FNV64(${1:text})"],
+    "description": "FNV64(text)"
+  },
+  "MD5": {
+    "prefix": "MD5",
+    "body": ["MD5(${1:text})"],
+    "description": "MD5(text)"
+  },
+  "SHA1": {
+    "prefix": "SHA1",
+    "body": ["SHA1(${1:text})"],
+    "description": "SHA1(text)"
+  },
+  "SHA512": {
+    "prefix": "SHA512",
+    "body": ["SHA512(${1:text})"],
+    "description": "SHA512(text)"
+  },
+  "APPLY": {
+    "prefix": "APPLY",
+    "body": ["APPLY(${1:functionName}, ${2:arguments})"],
+    "description": "APPLY(functionName, arguments)"
+  },
+
+  "ASSERT": {
+    "prefix": "ASSERT",
+    "body": ["ASSERT(${1:expression}, ${2:arguments})"],
+    "description": "ASSERT(expression, arguments)"
+  },
+  "WARN": {
+    "prefix": "WARN",
+    "body": ["WARN(${1:expression}, ${2:arguments})"],
+    "description": "WARN(expression, arguments)"
+  },
+
+  "CALL": {
+    "prefix": "CALL",
+    "body": ["CALL(${1:functionName}, ${2:arg1}$3)"],
+    "description": "CALL(functionName, ...args)"
+  },
+
+  "FAIL": {
+    "prefix": "FAIL",
+    "body": ["FAIL(${1:reason})"],
+    "description": "FAIL(reason)"
+  },
+
+  "NOOPT": {
+    "prefix": "NOOPT",
+    "body": ["NOOPT(${1:value})"],
+    "description": "NOOPT(value)"
+  },
+
+  "PASSTHRU": {
+    "prefix": "PASSTHRU",
+    "body": ["PASSTHRU(${1:value})"],
+    "description": "PASSTHRU(value)"
+  },
+
+  "SLEEP": {
+    "prefix": "SLEEP",
+    "body": ["SLEEP(${1:seconds})"],
+    "description": "SLEEP(seconds)"
+  },
+
+  "V8": {
+    "prefix": "V8",
+    "body": ["V8(${1:expression})"],
+    "description": "V8(expression)"
+  },
+
+  "VERSION": {
+    "prefix": "VERSION",
+    "body": ["VERSION()"],
+    "description": "VERSION()"
+  },
+
+  "ABS": {
+    "prefix": "ABS",
+    "body": ["ABS(${1:value})"],
+    "description": "ABS(value)"
+  },
+  "ACOS": {
+    "prefix": "ACOS",
+    "body": ["ACOS(${1:value})"],
+    "description": "ACOS(value)"
+  },
+  "ASIN": {
+    "prefix": "ASIN",
+    "body": ["ASIN(${1:value})"],
+    "description": "ASIN(value)"
+  },
+  "ATAN": {
+    "prefix": "ATAN",
+    "body": ["ATAN(${1:value})"],
+    "description": "ATAN(value)"
+  },
+  "ATAN2": {
+    "prefix": "ATAN2",
+    "body": ["ATAN2(${1:value})"],
+    "description": "ATAN2(value)"
+  },
+  "AVERAGE": {
+    "prefix": "AVERAGE",
+    "body": ["AVERAGE(${1:arrayOfNumbers})"],
+    "description": "AVERAGE(arrayOfNumbers)"
+  },
+  "AVG": {
+    "prefix": "AVG",
+    "body": ["AVG(${1:arrayOfNumbers})"],
+    "description": "AVG(arrayOfNumbers)"
+  },
+  "CEIL": {
+    "prefix": "CEIL",
+    "body": ["CEIL(${1:value})"],
+    "description": "CEIL(value)"
+  },
+  "COS": {
+    "prefix": "COS",
+    "body": ["COS(${1:value})"],
+    "description": "COS(value)"
+  },
+  "DEGREES": {
+    "prefix": "DEGREES",
+    "body": ["DEGREES(${1:rad})"],
+    "description": "DEGREES(rad)"
+  },
+  "EXP": {
+    "prefix": "EXP",
+    "body": ["EXP(${1:value})"],
+    "description": "EXP(value)"
+  },
+  "EXP2": {
+    "prefix": "EXP2",
+    "body": ["EXP2(${1:value})"],
+    "description": "EXP2(value)"
+  },
+  "FLOOR": {
+    "prefix": "FLOOR",
+    "body": ["FLOOR(${1:value})"],
+    "description": "FLOOR(value)"
+  },
+  "LOG": {
+    "prefix": "LOG",
+    "body": ["LOG(${1:value})"],
+    "description": "LOG(value)"
+  },
+  "LOG2": {
+    "prefix": "LOG2",
+    "body": ["LOG2(${1:value})"],
+    "description": "LOG2(value)"
+  },
+  "LOG10": {
+    "prefix": "LOG10",
+    "body": ["LOG10(${1:value})"],
+    "description": "LOG10(value)"
+  },
+  "MAX": {
+    "prefix": "MAX",
+    "body": ["MAX(${1:array})"],
+    "description": "MAX(array)"
+  },
+  "MEDIAN": {
+    "prefix": "MEDIAN",
+    "body": ["MEDIAN(${1:arrayOfNumbers})"],
+    "description": "MEDIAN(arrayOfNumbers)"
+  },
+  "MIN": {
+    "prefix": "MIN",
+    "body": ["MIN(${1:array})"],
+    "description": "MIN(array)"
+  },
+  "PERCENTILE": {
+    "prefix": "PERCENTILE",
+    "body": ["PERCENTILE(${1:arrayOfNumbers}, ${2:n}, ${3:method})"],
+    "description": "PERCENTILE(numArray, n, method)"
+  },
+  "PI": {
+    "prefix": "PI",
+    "body": ["PI()"],
+    "description": "PI()"
+  },
+  "POW": {
+    "prefix": "POW",
+    "body": ["POW(${1:base}, ${2:exp})"],
+    "description": "POW(base, pow)"
+  },
+  "RADIANS": {
+    "prefix": "RADIANS",
+    "body": ["RADIANS(${1:degree})"],
+    "description": "RADIANS(degree)"
+  },
+  "RAND": {
+    "prefix": "RAND",
+    "body": ["RAND()"],
+    "description": "RAND()"
+  },
+  "RANGE": {
+    "prefix": "RANGE",
+    "body": ["RANGE(${1:start}, ${1:stop}, ${1:step})"],
+    "description": "RANGE(start, stop, step)"
+  },
+  "ROUND": {
+    "prefix": "ROUND",
+    "body": ["ROUND(${1:value})"],
+    "description": "ROUND(value)"
+  },
+  "SIN": {
+    "prefix": "SIN",
+    "body": ["SIN(${1:value})"],
+    "description": "SIN(value)"
+  },
+  "SQRT": {
+    "prefix": "SQRT",
+    "body": ["SQRT(${1:value})"],
+    "description": "SQRT(value)"
+  },
+  "STDDEV_POPULATION": {
+    "prefix": "STDDEV_POPULATION",
+    "body": ["STDDEV_POPULATION(${1:arrayOfNumbers})"],
+    "description": "STDDEV_POPULATION(arrayOfNumbers)"
+  },
+  "STDDEV_SAMPLE": {
+    "prefix": "STDDEV_SAMPLE",
+    "body": ["STDDEV_SAMPLE(${1:arrayOfNumbers})"],
+    "description": "STDDEV_SAMPLE(arrayOfNumbers)"
+  },
+  "STDDEV": {
+    "prefix": "STDDEV",
+    "body": ["STDDEV(${1:arrayOfNumbers})"],
+    "description": "STDDEV(arrayOfNumbers)"
+  },
+  "SUM": {
+    "prefix": "SUM",
+    "body": ["SUM(${1:arrayOfNumbers})"],
+    "description": "SUM(arrayOfNumbers)"
+  },
+  "TAN": {
+    "prefix": "TAN",
+    "body": ["TAN(${1:value})"],
+    "description": "TAN(value)"
+  },
+  "VARIANCE_POPULATION": {
+    "prefix": "VARIANCE_POPULATION",
+    "body": ["VARIANCE_POPULATION(${1:arrayOfNumbers})"],
+    "description": "VARIANCE_POPULATION(arrayOfNumbers)"
+  },
+  "VARIANCE_SAMPLE": {
+    "prefix": "VARIANCE_SAMPLE",
+    "body": ["VARIANCE_SAMPLE(${1:arrayOfNumbers})"],
+    "description": "VARIANCE_SAMPLE(arrayOfNumbers)"
+  },
+  "VARIANCE": {
+    "prefix": "VARIANCE",
+    "body": ["VARIANCE(${1:value})"],
+    "description": "VARIANCE(value)"
+  },
+  "CHAR_LENGTH": {
+    "prefix": "CHAR_LENGTH",
+    "body": ["CHAR_LENGTH(${1:value})"],
+    "description": "CHAR_LENGTH(value)"
+  },
+  "CONCAT": {
+    "prefix": "CONCAT",
+    "body": ["CONCAT(${1:value}, ${2:value2}$3)"],
+    "description": "CONCAT(value, value2, ...valueN)"
+  },
+  "CONCAT_SEPARATOR": {
+    "prefix": "CONCAT_SEPARATOR",
+    "body": ["CONCAT_SEPARATOR(${1:separator}, ${2:value}, ${3:value2}$4)"],
+    "description": "CONCAT_SEPARATOR(separator, value, value2, ...valueN)"
+  },
+  "CONTAINS": {
+    "prefix": "CONTAINS",
+    "body": ["CONTAINS(${1:text}, ${2:search}, ${3:returnIndex)"],
+    "description": "CONTAINS(text, search, returnIndex)"
+  },
+  "ENCODE_URI_COMPONENT": {
+    "prefix": "ENCODE_URI_COMPONENT",
+    "body": ["ENCODE_URI_COMPONENT(${1:value})"],
+    "description": "ENCODE_URI_COMPONENT(value)"
+  },
+  "FIND_FIRST": {
+    "prefix": "FIND_FIRST",
+    "body": ["FIND_FIRST(${1:text}, ${2:search}, ${3:start}, ${4:end})"],
+    "description": "FIND_FIRST(text, search, start, end)"
+  },
+  "FIND_LAST": {
+    "prefix": "FIND_LAST",
+    "body": ["FIND_LAST(${1:text}, ${2:search}, ${3:start}, ${4:end})"],
+    "description": "FIND_LAST(text, search, start, end)"
+  },
+  "JSON_PARSE": {
+    "prefix": "JSON_PARSE",
+    "body": ["JSON_PARSE(${1:text})"],
+    "description": "JSON_PARSE(text)"
+  },
+  "JSON_STRINGIFY": {
+    "prefix": "JSON_STRINGIFY",
+    "body": ["JSON_STRINGIFY(${1:text})"],
+    "description": "JSON_STRINGIFY(text)"
+  },
+  "LEFT": {
+    "prefix": "LEFT",
+    "body": ["LEFT(${1:value}, ${2:n})"],
+    "description": "LEFT(value, n)"
+  },
+  "LEVENSHTEIN_DISTANCE": {
+    "prefix": "LEVENSHTEIN_DISTANCE",
+    "body": ["LEVENSHTEIN_DISTANCE(${1:value1}, ${2:value2})"],
+    "description": "LEVENSHTEIN_DISTANCE(value1, value2)"
+  },
+  "LIKE": {
+    "prefix": "LIKE",
+    "body": ["LIKE(${1:text}, ${2:search})"],
+    "description": "LIKE(text, search)"
+  },
+  "LOWER": {
+    "prefix": "LOWER",
+    "body": ["LOWER(${1:value})"],
+    "description": "LOWER(value)"
+  },
+  "LTRIM": {
+    "prefix": "LTRIM",
+    "body": ["LTRIM(${1:value}, ${2:chars})"],
+    "description": "LTRIM(value, chars)"
+  },
+  "RANDOM_TOKEN": {
+    "prefix": "RANDOM_TOKEN",
+    "body": ["RANDOM_TOKEN(${1:length})"],
+    "description": "RANDOM_TOKEN(length)"
+  },
+  "REGEX_MATCHES": {
+    "prefix": "REGEX_MATCHES",
+    "body": ["REGEX_MATCHES(${1:text}, ${2:search}, ${3:caseInsensitive})"],
+    "description": "REGEX_MATCHES(text, search, caseInsensitive)"
+  },
+  "REGEX_SPLIT": {
+    "prefix": "REGEX_SPLIT",
+    "body": [
+      "REGEX_SPLIT(${1:text}, ${2:search}, ${3:caseInsensitive}, ${4:limit})"
+    ],
+    "description": "REGEX_SPLIT(text, search, caseInsensitive, limit)"
+  },
+  "REGEX_TEST": {
+    "prefix": "REGEX_TEST",
+    "body": ["REGEX_TEST(${1:text}, ${2:search}, ${3:caseInsensitive})"],
+    "description": "REGEX_TEST(text, search, caseInsensitive)"
+  },
+  "REGEX_REPLACE": {
+    "prefix": "REGEX_REPLACE",
+    "body": [
+      "REGEX_REPLACE(${1:text}, ${2:search}, ${3:replacement}, ${4:caseInsensitive})"
+    ],
+    "description": "REGEX_REPLACE(text, search, replacement, caseInsensitive)"
+  },
+  "RIGHT": {
+    "prefix": "RIGHT",
+    "body": ["RIGHT(${1:value}, ${2:n})"],
+    "description": "RIGHT(value, n)"
+  },
+  "RTRIM": {
+    "prefix": "RTRIM",
+    "body": ["RTRIM(${1:value}, ${2:chars})"],
+    "description": "RTRIM(value, chars)"
+  },
+
+  "SPLIT": {
+    "prefix": "SPLIT",
+    "body": ["SPLIT(${1:value}, ${2:separator}, ${3:limit})"],
+    "description": "SPLIT(value, separator, limit)"
+  },
+
+  "SOUNDEX": {
+    "prefix": "SOUNDEX",
+    "body": ["SOUNDEX(${1:value})"],
+    "description": "SOUNDEX(value)"
+  },
+
+  "SUBSTITUTE": {
+    "prefix": "SUBSTITUTE",
+    "body": ["SUBSTITUTE(${1:value}, ${2:search}, ${3:replace}, ${4:limit})"],
+    "description": "SUBSTITUTE(value, search, replace, limit)"
+  },
+  "SUBSTRING": {
+    "prefix": "SUBSTRING",
+    "body": ["SUBSTRING(${1:value}, ${2:offset}, ${3:length})"],
+    "description": "SUBSTRING(value, offset, length)"
+  },
+  "TOKENS": {
+    "prefix": "TOKENS",
+    "body": ["TOKENS(${1:input}, ${2:analyzer})"],
+    "description": "TOKENS(input, analyzer)"
+  },
+  "TO_BASE64": {
+    "prefix": "TO_BASE64",
+    "body": ["TO_BASE64(${1:value})"],
+    "description": "TO_BASE64(value)"
+  },
+  "TO_HEX": {
+    "prefix": "TO_HEX",
+    "body": ["TO_HEX(${1:value})"],
+    "description": "TO_HEX(value)"
+  },
+  "TRIM": {
+    "prefix": "TRIM",
+    "body": ["TRIM(${1:value}, ${2:type})"],
+    "description": "TRIM(value, type)"
+  },
+  "UPPER": {
+    "prefix": "UPPER",
+    "body": ["UPPER(${1:value})"],
+    "description": "UPPER(value)"
+  },
+  "UUID": {
+    "prefix": "UUID",
+    "body": ["UUID()"],
+    "description": "UUID()"
+  },
+  "TO_BOOL": {
+    "prefix": "TO_BOOL",
+    "body": ["TO_BOOL(${1:value})"],
+    "description": "TO_BOOL(value)"
+  },
+  "TO_NUMBER": {
+    "prefix": "TO_NUMBER",
+    "body": ["TO_NUMBER(${1:value})"],
+    "description": "TO_NUMBER(value)"
+  },
+  "TO_STRING": {
+    "prefix": "TO_STRING",
+    "body": ["TO_STRING(${1:value})"],
+    "description": "TO_STRING(value)"
+  },
+  "TO_ARRAY": {
+    "prefix": "TO_ARRAY",
+    "body": ["TO_ARRAY(${1:value})"],
+    "description": "TO_ARRAY(value)"
+  },
+  "TO_LIST": {
+    "prefix": "TO_LIST",
+    "body": ["TO_LIST(${1:value})"],
+    "description": "TO_LIST(value)"
+  },
+  "IS_NULL": {
+    "prefix": "IS_NULL",
+    "body": ["IS_NULL(${1:value})"],
+    "description": "IS_NULL(value)"
+  },
+  "IS_BOOL": {
+    "prefix": "IS_BOOL",
+    "body": ["IS_BOOL(${1:value})"],
+    "description": "IS_BOOL(value)"
+  },
+  "IS_NUMBER": {
+    "prefix": "IS_NUMBER",
+    "body": ["IS_NUMBER(${1:value})"],
+    "description": "IS_NUMBER(value)"
+  },
+  "IS_STRING": {
+    "prefix": "IS_STRING",
+    "body": ["IS_STRING(${1:value})"],
+    "description": "IS_STRING(value)"
+  },
+  "IS_ARRAY": {
+    "prefix": "IS_ARRAY",
+    "body": ["IS_ARRAY(${1:value})"],
+    "description": "IS_ARRAY(value)"
+  },
+  "IS_LIST": {
+    "prefix": "IS_LIST",
+    "body": ["IS_LIST(${1:value})"],
+    "description": "IS_LIST(value)"
+  },
+  "IS_OBJECT": {
+    "prefix": "IS_OBJECT",
+    "body": ["IS_OBJECT(${1:value})"],
+    "description": "IS_OBJECT(value)"
+  },
+  "IS_DOCUMENT": {
+    "prefix": "IS_DOCUMENT",
+    "body": ["IS_DOCUMENT(${1:value})"],
+    "description": "IS_DOCUMENT(value)"
+  },
+  "IS_KEY": {
+    "prefix": "IS_KEY",
+    "body": ["IS_KEY(${1:value})"],
+    "description": "IS_KEY(value)"
+  },
+  "TYPENAME": {
+    "prefix": "TYPENAME",
+    "body": ["TYPENAME(${1:value})"],
+    "description": "TYPENAME(value)"
+  },
+  "GRAPH": {
+    "prefix": "GRAPH",
+    "body": ["GRAPH ${1:graphName}"],
+    "description": "GRAPH graphName"
+  },
+  "PRUNE": {
+    "prefix": "PRUNE",
+    "body": ["PRUNE ${1:pruneCondition}"],
+    "description": "PRUNE pruneCondition"
+  },
+  "OPTIONS ": {
+    "prefix": "OPTIONS ",
+    "body": ["OPTIONS  ${1:options}"],
+    "description": "OPTIONS options"
+  },
+  "SHORTEST_PATH": {
+    "prefix": "SHORTEST_PATH",
+    "body": [
+      "FOR ${1:vertex} IN ${2|OUTBOUND|INBOUND|ANY|} SHORTEST_PATH",
+      "${3:startVertex} TO ${4:targetVertex}",
+      "${5:edges1} ${6|OUTBOUND|INBOUND|ANY|} ${7:edgesN}"
+    ],
+    "description": "SHORTEST_PATH SHORTEST_PATHName"
+  },
+  "SEARCH": {
+    "prefix": "SEARCH",
+    "body": [
+      "FOR ${1:document} IN ${2:exampleView}",
+      "\tSEARCH ${3:search}",
+      "$0"
+    ],
+    "description": "FOR document IN exampleView SEARCH search"
+  },
+
+  "_id": {
+    "prefix": "_id",
+    "body": ["_id"]
+  },
+
+  "_key": {
+    "prefix": "_key",
+    "body": ["_key"]
+  },
+
+  "_rev": {
+    "prefix": "_rev",
+    "body": ["_rev"]
+  },
+
+  "doc _id": {
+    "prefix": "id",
+    "body": ["${1:doc}._id"]
+  },
+
+  "doc _key": {
+    "prefix": "key",
+    "body": ["${1:doc}._key"]
+  },
+
+  "doc _rev": {
+    "prefix": "rev",
+    "body": ["${1:doc}._rev"]
+  }
+}

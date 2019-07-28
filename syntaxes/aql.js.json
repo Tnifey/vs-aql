@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "aql",
+  "fileTypes": ["js", "jsx", "ts", "tsx", "vue"],
+  "injectionSelector": "L:source -string -comment",
+  "patterns": [
+    {
+      "begin": "\\$\\{",
+      "end": "\\}",
+      "patterns": [{ "include": "#outsource" }]
+    },
+    {
+      "name": "source.js",
+      "contentName": "meta.embedded.block",
+      "begin": "(?:aql\\.literal)\\(",
+      "beginCaptures": {
+        "1": {
+          "name": "variable.other.object"
+        },
+        "2": {
+          "name": "punctuation.accessor"
+        },
+        "3": {
+          "name": "entity.name.function"
+        },
+        "5": {
+          "patterns": [{ "include": "source.aql" }, { "include": "#outsource" }]
+        }
+      },
+      "end": "`\\)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "patterns": [{ "include": "source.aql" }, { "include": "#outsource" }]
+    },
+    {
+      "include": "#embedded"
+    }
+  ],
+
+  "repository": {
+    "outsource": {
+      "patterns": [
+        {
+          "include": "source.js"
+        },
+        {
+          "include": "source.ts"
+        },
+        {
+          "include": "source.js.jsx"
+        },
+        {
+          "include": "source.tsx"
+        },
+        {
+          "include": "source.vue"
+        }
+      ]
+    },
+    "embedded": {
+      "patterns": [
+        {
+          "contentName": "meta.embedded.block.aql",
+          "begin": "\\s*+(?:(?:(Relay)\\??\\.)(QL)|(aql|aql\\.literal)|(/\\* aql \\*/))\\s*(`)",
+          "beginCaptures": {
+            "1": {
+              "name": "variable.other.class.js"
+            },
+            "2": {
+              "name": "entity.name.function.tagged-template.js"
+            },
+            "3": {
+              "name": "entity.name.function.tagged-template.js"
+            },
+            "4": {
+              "name": "comment.aql.js"
+            },
+            "5": {
+              "name": "punctuation.definition.string.template.begin.js"
+            }
+          },
+          "end": "`",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.template.end.js"
+            }
+          },
+          "patterns": [{ "include": "source.aql" }, { "include": "#outsource" }]
+        },
+        {
+          "name": "taggedTemplates",
+          "contentName": "meta.embedded.block.aql",
+          "begin": "(`)(#aql)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.template.begin.js"
+            },
+            "2": {
+              "name": "comment.line.aql.js"
+            }
+          },
+          "end": "`",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.template.end.js"
+            }
+          },
+          "patterns": [{ "include": "source.aql" }]
+        }
+      ]
+    }
+  },
+  "scopeName": "inline.aql"
+}
