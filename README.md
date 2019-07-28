@@ -10,7 +10,7 @@ should work with .aql, .js, .jsx, .ts, .tsx, .vue files
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 👍
 
