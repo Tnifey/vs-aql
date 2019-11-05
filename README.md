@@ -2,6 +2,12 @@
 
 should work with .aql, .js, .jsx, .ts, .tsx files
 
+![.aql](code.png)
+highlights .aql files
+
+![typescript template literal](code-in-ts.png)
+highlights typescript template literal with `//aql` comment
+
 ## Features
 
 - basic support for syntax hightlight
