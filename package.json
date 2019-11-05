@@ -2,11 +2,11 @@
   "name": "vs-aql",
   "displayName": "AQL for vscode",
   "description": "AQL ArangoDB Query Language Support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.36.0"
   },
-  "icon": "icon.png",
+  "icon": "https://github.com/Tnifey/vs-aql/blob/master/icon.png?raw=true",
   "categories": [
     "Programming Languages",
     "Snippets"
@@ -35,10 +35,9 @@
           "source.js",
           "source.ts",
           "source.js.jsx",
-          "source.tsx",
-          "source.vue"
+          "source.tsx"
         ],
-        "scopeName": "inline.aql",
+        "scopeName": "source.inline.aql",
         "path": "./syntaxes/aql.js.json",
         "embeddedLanguages": {
           "meta.embedded.block.aql": "aql"

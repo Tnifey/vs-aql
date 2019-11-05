@@ -1,8 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "aql",
+  "scopeName": "source.aql",
   "injectionSelector": "L:source -string -comment",
-  "displayName": "AQL",
+  "displayName": "aql",
   "patterns": [
     {
       "begin": "//",
@@ -22,15 +23,31 @@
         {
           "name": "keyword.control",
           "captures": {
-            "1": {
-              "name": "variable.name"
-            },
-            "2": {
-              "name": "entity.name.class"
-            }
+            "1": { "name": "variable.name" },
+            "2": { "name": "entity.name.class" }
           },
           "match": "(?i:for\\s+(\\w+)\\s+in\\s+(\\w+))"
         },
+        {
+          "name": "keyword.control",
+          "captures": {
+            "1": { "name": "variable.name" },
+            "2": { "name": "variable.name" },
+            "3": { "name": "entity.name.class" }
+          },
+          "match": "(?i:for\\s+(\\w+)\\s*\\,\\s*(\\w+)\\s+in\\s+(\\w+))"
+        },
+        {
+          "name": "keyword.control",
+          "captures": {
+            "1": { "name": "variable.name" },
+            "2": { "name": "variable.name" },
+            "3": { "name": "variable.name" },
+            "4": { "name": "entity.name.class" }
+          },
+          "match": "(?i:for\\s+(\\w+)\\s*\\,\\s*(\\w+)\\s*\\,\\s*(\\w+)\\s+in\\s+(\\w+))"
+        },
+
         {
           "name": "support.class",
           "match": "(?i)\\b(document)\\b"
@@ -52,18 +69,18 @@
         },
         {
           "name": "keyword.control",
-          "match": "\\b(FOR|IN|RETURN|FILTER|SORT|LIMIT|LET|COLLECT|REMOVE|UPDATE|REPLACE|INSERT|UPSERT|WITH|INTO|IN)\\b"
+          "match": "(?i)\\b(FOR|IN|RETURN|FILTER|SORT|LIMIT|LET|COLLECT|REMOVE|UPDATE|REPLACE|INSERT|UPSERT|WITH|INTO|IN)\\b"
         },
         {
-          "match": "(?<!\\^)&&?|\\|\\|",
+          "match": "(?<!\\^)&&?|\\|\\||(^\\s*|\\s+)\\?(\\s+|\\(|\\:)|(^\\s*|\\s+)\\:(\\s+|\\()",
           "name": "keyword.operator.conditional"
         },
         {
           "match": "((?<!@)@@?)\\b(\\w+)\\b",
-          "name": "text.variable.name"
+          "name": "support.type"
         },
         {
-          "match": "(?i)\\b(in|into|any|inbound|outbound|graph)\\b",
+          "match": "(?i)\\b(in|into|any|inbound|outbound|graph|asc|desc|all|not|search)\\b",
           "name": "keyword.control"
         },
         {
@@ -95,8 +112,13 @@
           "name": "constant.language"
         },
         {
-          "match": "(?i)\\b(abs|acos|append|apply|asin|assert|atan|atn2|attributes|call|char_length|check_document|collection_count|collections|concat|concat_separator|contains|contains_array|cos|cot|count|count_distinct|count_unique|crc32|current_user|date_add|date_compare|date_day|date_dayofweek|date_dayofyear|date_days_in_month|date_diff|date_format|date_hour|date_iso8601|date_isoweek|date_leapyear|date_millisecond|date_minute|date_month|date_now|date_quarter|date_second|date_subtract|date_timestamp|date_trunc|date_year|degrees|distance|encode_uri_component|exp|exp2|fail|find_first|find_last|first|first_document|first_list|flatten|floor|fnv64|fulltext|geo_contains|geo_distance|geo_equals|geo_intersects|geo_linestring|geo_multilinestring|geo_multipoint|geo_multipolygon|geo_point|geo_polygon|has|hash|intersection|is_array|is_bool|is_datestring|is_datestring|is_document|is_in_polygon|is_key|is_list|is_null|is_number|is_object|is_same_collection|is_string|json_parse|json_stringify|keep|last|left|length|length|length|length|levenshtein_distance|like|log|log10|log2|lower|ltrim|matches|max|md5|median|merge|merge_recursive|min|minus|near|noopt|not_null|nth|outersection|parse_identifier|passthru|percentile|pi|pop|position|pow|push|radians|rand|random_token|range|regex_matches|regex_replace|regex_split|regex_test|remove_nth|remove_value|remove_values|reverse|reverse|right|round|rtrim|sha1|sha512|shift|sin|sleep|slice|sorted|sorted_unique|soundex|split|sqrt|stddev|stddev_population|stddev_sample|substitute|substring|sum|tan|to_array|to_base64|to_bool|to_hex|to_list|to_number|to_string|tokens|translate|trim|typename|union|union_distinct|unique|unset|unset_recursive|unshift|upper|uuid|v8|values|variance|variance_population|variance_sample|version|warn|within|within_rectangle|zip)\\b",
-          "name": "support.function"
+          "match": "\\b(CURRENT|OLD|NEW)\\b",
+          "name": "entity.name.class"
+        },
+
+        {
+          "match": "(?i)\\b(?:abs|acos|append|apply|asin|assert|atan|atn2|attributes|call|char_length|check_document|collection_count|collections|concat|concat_separator|contains|contains_array|cos|cot|count|count_distinct|count_unique|crc32|current_user|date_add|date_compare|date_day|date_dayofweek|date_dayofyear|date_days_in_month|date_diff|date_format|date_hour|date_iso8601|date_isoweek|date_leapyear|date_millisecond|date_minute|date_month|date_now|date_quarter|date_second|date_subtract|date_timestamp|date_trunc|date_year|degrees|distance|encode_uri_component|exp|exp2|fail|find_first|find_last|first|first_document|first_list|flatten|floor|fnv64|fulltext|geo_contains|geo_distance|geo_equals|geo_intersects|geo_linestring|geo_multilinestring|geo_multipoint|geo_multipolygon|geo_point|geo_polygon|has|hash|intersection|is_array|is_bool|is_datestring|is_datestring|is_document|is_in_polygon|is_key|is_list|is_null|is_number|is_object|is_same_collection|is_string|json_parse|json_stringify|keep|last|left|length|length|length|length|levenshtein_distance|like|log|log10|log2|lower|ltrim|matches|max|md5|median|merge|merge_recursive|min|minus|near|noopt|not_null|nth|outersection|parse_identifier|passthru|percentile|pi|pop|position|pow|push|radians|rand|random_token|range|regex_matches|regex_replace|regex_split|regex_test|remove_nth|remove_value|remove_values|reverse|reverse|right|round|rtrim|sha1|sha512|shift|sin|sleep|slice|sorted|sorted_unique|soundex|split|sqrt|stddev|stddev_population|stddev_sample|substitute|substring|sum|tan|to_array|to_base64|to_bool|to_hex|to_list|to_number|to_string|tokens|translate|trim|typename|union|union_distinct|unique|unset|unset_recursive|unshift|upper|uuid|v8|values|variance|variance_population|variance_sample|version|warn|within|within_rectangle|zip|tokens|phrases|phrase|starts_with|analyzer)\\b",
+          "name": "entity.name.function"
         }
       ]
     },
@@ -306,6 +328,5 @@
         }
       ]
     }
-  },
-  "scopeName": "source.aql"
+  }
 }
